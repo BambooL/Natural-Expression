@@ -1,0 +1,5 @@
+let _a be digit
+let _b be repeat 2 _a
+let _c be word
+let _d be or _b _c
+let _e be not _d
