@@ -2,4 +2,8 @@ let _a be digit
 let _b be repeat 2 _a
 let _c be word
 let _d be or _b _c
-let _e be not _d
+let _e be char
+let _f be one of 0-9
+let _g be repeat several _f
+let _h be concat _d _e
+let _i be or _h _g

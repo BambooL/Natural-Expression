@@ -15,16 +15,17 @@ def p_print(p):
 	else:
 		print "Sorry, no this value!"
 
-
-# def p_expr(p):
-# 	'''expr : REPEAT NUMBER expr
-# 	| OR expr expr
-# 	| CONCAT expr expr
-# 	| term'''
-
 def p_expr_repeat(p):
 	'expr : REPEAT NUMBER expr'
 	p[0] = '( ' + p[3] + " { " + p[2] + " } " + " )"
+
+def p_expr_repeat_several(p):
+	'expr : REPEAT SEVERAL expr'
+	p[0] = '( ' + p[3] + "*" + " )"
+
+def p_expr_repeat_range(p):
+	'expr : REPEAT NUMBER TO NUMBER expr'
+	p[0] = '( ' + p[5] + "{" + p[2] + "," + p[3] + "}" + " )"
 
 def p_expr_or(p):
 	'expr : OR expr expr'
@@ -37,6 +38,10 @@ def p_expr_concat(p):
 def p_expr_not(p):
 	'expr : NOT expr'
 	p[0] = '^' + p[2]
+
+def p_expr_to(p):
+	'expr : ONEOF NUMBER TO NUMBER'
+	p[0] = '[' + p[2] + '-' + p[4] + ']'
 
 def p_expr_term(p):
 	'expr : term'

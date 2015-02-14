@@ -6,39 +6,45 @@ Rule 0     S' -> assign
 Rule 1     assign -> LET NAME BE expr
 Rule 2     show -> PRINT expr
 Rule 3     expr -> REPEAT NUMBER expr
-Rule 4     expr -> OR expr expr
-Rule 5     expr -> CONCAT expr expr
-Rule 6     expr -> NOT expr
-Rule 7     expr -> term
-Rule 8     term -> NAME
-Rule 9     term -> DIGIT
-Rule 10    term -> CHAR
-Rule 11    term -> WORD
-Rule 12    term -> CONST
+Rule 4     expr -> REPEAT SEVERAL expr
+Rule 5     expr -> REPEAT NUMBER TO NUMBER expr
+Rule 6     expr -> OR expr expr
+Rule 7     expr -> CONCAT expr expr
+Rule 8     expr -> NOT expr
+Rule 9     expr -> ONEOF NUMBER TO NUMBER
+Rule 10    expr -> term
+Rule 11    term -> NAME
+Rule 12    term -> DIGIT
+Rule 13    term -> CHAR
+Rule 14    term -> WORD
+Rule 15    term -> CONST
 
 Terminals, with rules where they appear
 
 BE                   : 1
-CHAR                 : 10
-CONCAT               : 5
-CONST                : 12
-DIGIT                : 9
+CHAR                 : 13
+CONCAT               : 7
+CONST                : 15
+DIGIT                : 12
 LET                  : 1
-NAME                 : 1 8
-NOT                  : 6
-NUMBER               : 3
-OR                   : 4
+NAME                 : 1 11
+NOT                  : 8
+NUMBER               : 3 5 5 9 9
+ONEOF                : 9
+OR                   : 6
 PRINT                : 2
-REPEAT               : 3
-WORD                 : 11
+REPEAT               : 3 4 5
+SEVERAL              : 4
+TO                   : 5 9
+WORD                 : 14
 error                : 
 
 Nonterminals, with rules where they appear
 
 assign               : 0
-expr                 : 1 2 3 4 4 5 5 6
+expr                 : 1 2 3 4 5 6 6 7 7 8
 show                 : 
-term                 : 7
+term                 : 10
 
 Parsing method: LALR
 
@@ -75,82 +81,82 @@ state 4
 
     (1) assign -> LET NAME BE . expr
     (3) expr -> . REPEAT NUMBER expr
-    (4) expr -> . OR expr expr
-    (5) expr -> . CONCAT expr expr
-    (6) expr -> . NOT expr
-    (7) expr -> . term
-    (8) term -> . NAME
-    (9) term -> . DIGIT
-    (10) term -> . CHAR
-    (11) term -> . WORD
-    (12) term -> . CONST
+    (4) expr -> . REPEAT SEVERAL expr
+    (5) expr -> . REPEAT NUMBER TO NUMBER expr
+    (6) expr -> . OR expr expr
+    (7) expr -> . CONCAT expr expr
+    (8) expr -> . NOT expr
+    (9) expr -> . ONEOF NUMBER TO NUMBER
+    (10) expr -> . term
+    (11) term -> . NAME
+    (12) term -> . DIGIT
+    (13) term -> . CHAR
+    (14) term -> . WORD
+    (15) term -> . CONST
 
     REPEAT          shift and go to state 6
-    OR              shift and go to state 14
-    CONCAT          shift and go to state 15
-    NOT             shift and go to state 12
+    OR              shift and go to state 15
+    CONCAT          shift and go to state 16
+    NOT             shift and go to state 13
+    ONEOF           shift and go to state 5
     NAME            shift and go to state 8
-    DIGIT           shift and go to state 13
+    DIGIT           shift and go to state 14
     CHAR            shift and go to state 11
     WORD            shift and go to state 7
     CONST           shift and go to state 10
 
     expr                           shift and go to state 9
-    term                           shift and go to state 5
+    term                           shift and go to state 12
 
 state 5
 
-    (7) expr -> term .
+    (9) expr -> ONEOF . NUMBER TO NUMBER
 
-    $end            reduce using rule 7 (expr -> term .)
-    REPEAT          reduce using rule 7 (expr -> term .)
-    OR              reduce using rule 7 (expr -> term .)
-    CONCAT          reduce using rule 7 (expr -> term .)
-    NOT             reduce using rule 7 (expr -> term .)
-    NAME            reduce using rule 7 (expr -> term .)
-    DIGIT           reduce using rule 7 (expr -> term .)
-    CHAR            reduce using rule 7 (expr -> term .)
-    WORD            reduce using rule 7 (expr -> term .)
-    CONST           reduce using rule 7 (expr -> term .)
+    NUMBER          shift and go to state 17
 
 
 state 6
 
     (3) expr -> REPEAT . NUMBER expr
+    (4) expr -> REPEAT . SEVERAL expr
+    (5) expr -> REPEAT . NUMBER TO NUMBER expr
 
-    NUMBER          shift and go to state 16
+    NUMBER          shift and go to state 19
+    SEVERAL         shift and go to state 18
 
 
 state 7
 
-    (11) term -> WORD .
+    (14) term -> WORD .
 
-    $end            reduce using rule 11 (term -> WORD .)
-    REPEAT          reduce using rule 11 (term -> WORD .)
-    OR              reduce using rule 11 (term -> WORD .)
-    CONCAT          reduce using rule 11 (term -> WORD .)
-    NOT             reduce using rule 11 (term -> WORD .)
-    NAME            reduce using rule 11 (term -> WORD .)
-    DIGIT           reduce using rule 11 (term -> WORD .)
-    CHAR            reduce using rule 11 (term -> WORD .)
-    WORD            reduce using rule 11 (term -> WORD .)
-    CONST           reduce using rule 11 (term -> WORD .)
+    $end            reduce using rule 14 (term -> WORD .)
+    REPEAT          reduce using rule 14 (term -> WORD .)
+    OR              reduce using rule 14 (term -> WORD .)
+    CONCAT          reduce using rule 14 (term -> WORD .)
+    NOT             reduce using rule 14 (term -> WORD .)
+    ONEOF           reduce using rule 14 (term -> WORD .)
+    NAME            reduce using rule 14 (term -> WORD .)
+    DIGIT           reduce using rule 14 (term -> WORD .)
+    CHAR            reduce using rule 14 (term -> WORD .)
+    WORD            reduce using rule 14 (term -> WORD .)
+    CONST           reduce using rule 14 (term -> WORD .)
 
 
 state 8
 
-    (8) term -> NAME .
+    (11) term -> NAME .
 
-    $end            reduce using rule 8 (term -> NAME .)
-    REPEAT          reduce using rule 8 (term -> NAME .)
-    OR              reduce using rule 8 (term -> NAME .)
-    CONCAT          reduce using rule 8 (term -> NAME .)
-    NOT             reduce using rule 8 (term -> NAME .)
-    NAME            reduce using rule 8 (term -> NAME .)
-    DIGIT           reduce using rule 8 (term -> NAME .)
-    CHAR            reduce using rule 8 (term -> NAME .)
-    WORD            reduce using rule 8 (term -> NAME .)
-    CONST           reduce using rule 8 (term -> NAME .)
+    $end            reduce using rule 11 (term -> NAME .)
+    REPEAT          reduce using rule 11 (term -> NAME .)
+    OR              reduce using rule 11 (term -> NAME .)
+    CONCAT          reduce using rule 11 (term -> NAME .)
+    NOT             reduce using rule 11 (term -> NAME .)
+    ONEOF           reduce using rule 11 (term -> NAME .)
+    NAME            reduce using rule 11 (term -> NAME .)
+    DIGIT           reduce using rule 11 (term -> NAME .)
+    CHAR            reduce using rule 11 (term -> NAME .)
+    WORD            reduce using rule 11 (term -> NAME .)
+    CONST           reduce using rule 11 (term -> NAME .)
 
 
 state 9
@@ -162,231 +168,340 @@ state 9
 
 state 10
 
-    (12) term -> CONST .
+    (15) term -> CONST .
 
-    $end            reduce using rule 12 (term -> CONST .)
-    REPEAT          reduce using rule 12 (term -> CONST .)
-    OR              reduce using rule 12 (term -> CONST .)
-    CONCAT          reduce using rule 12 (term -> CONST .)
-    NOT             reduce using rule 12 (term -> CONST .)
-    NAME            reduce using rule 12 (term -> CONST .)
-    DIGIT           reduce using rule 12 (term -> CONST .)
-    CHAR            reduce using rule 12 (term -> CONST .)
-    WORD            reduce using rule 12 (term -> CONST .)
-    CONST           reduce using rule 12 (term -> CONST .)
+    $end            reduce using rule 15 (term -> CONST .)
+    REPEAT          reduce using rule 15 (term -> CONST .)
+    OR              reduce using rule 15 (term -> CONST .)
+    CONCAT          reduce using rule 15 (term -> CONST .)
+    NOT             reduce using rule 15 (term -> CONST .)
+    ONEOF           reduce using rule 15 (term -> CONST .)
+    NAME            reduce using rule 15 (term -> CONST .)
+    DIGIT           reduce using rule 15 (term -> CONST .)
+    CHAR            reduce using rule 15 (term -> CONST .)
+    WORD            reduce using rule 15 (term -> CONST .)
+    CONST           reduce using rule 15 (term -> CONST .)
 
 
 state 11
 
-    (10) term -> CHAR .
+    (13) term -> CHAR .
 
-    $end            reduce using rule 10 (term -> CHAR .)
-    REPEAT          reduce using rule 10 (term -> CHAR .)
-    OR              reduce using rule 10 (term -> CHAR .)
-    CONCAT          reduce using rule 10 (term -> CHAR .)
-    NOT             reduce using rule 10 (term -> CHAR .)
-    NAME            reduce using rule 10 (term -> CHAR .)
-    DIGIT           reduce using rule 10 (term -> CHAR .)
-    CHAR            reduce using rule 10 (term -> CHAR .)
-    WORD            reduce using rule 10 (term -> CHAR .)
-    CONST           reduce using rule 10 (term -> CHAR .)
+    $end            reduce using rule 13 (term -> CHAR .)
+    REPEAT          reduce using rule 13 (term -> CHAR .)
+    OR              reduce using rule 13 (term -> CHAR .)
+    CONCAT          reduce using rule 13 (term -> CHAR .)
+    NOT             reduce using rule 13 (term -> CHAR .)
+    ONEOF           reduce using rule 13 (term -> CHAR .)
+    NAME            reduce using rule 13 (term -> CHAR .)
+    DIGIT           reduce using rule 13 (term -> CHAR .)
+    CHAR            reduce using rule 13 (term -> CHAR .)
+    WORD            reduce using rule 13 (term -> CHAR .)
+    CONST           reduce using rule 13 (term -> CHAR .)
 
 
 state 12
 
-    (6) expr -> NOT . expr
-    (3) expr -> . REPEAT NUMBER expr
-    (4) expr -> . OR expr expr
-    (5) expr -> . CONCAT expr expr
-    (6) expr -> . NOT expr
-    (7) expr -> . term
-    (8) term -> . NAME
-    (9) term -> . DIGIT
-    (10) term -> . CHAR
-    (11) term -> . WORD
-    (12) term -> . CONST
+    (10) expr -> term .
 
-    REPEAT          shift and go to state 6
-    OR              shift and go to state 14
-    CONCAT          shift and go to state 15
-    NOT             shift and go to state 12
-    NAME            shift and go to state 8
-    DIGIT           shift and go to state 13
-    CHAR            shift and go to state 11
-    WORD            shift and go to state 7
-    CONST           shift and go to state 10
+    $end            reduce using rule 10 (expr -> term .)
+    REPEAT          reduce using rule 10 (expr -> term .)
+    OR              reduce using rule 10 (expr -> term .)
+    CONCAT          reduce using rule 10 (expr -> term .)
+    NOT             reduce using rule 10 (expr -> term .)
+    ONEOF           reduce using rule 10 (expr -> term .)
+    NAME            reduce using rule 10 (expr -> term .)
+    DIGIT           reduce using rule 10 (expr -> term .)
+    CHAR            reduce using rule 10 (expr -> term .)
+    WORD            reduce using rule 10 (expr -> term .)
+    CONST           reduce using rule 10 (expr -> term .)
 
-    expr                           shift and go to state 17
-    term                           shift and go to state 5
 
 state 13
 
-    (9) term -> DIGIT .
-
-    $end            reduce using rule 9 (term -> DIGIT .)
-    REPEAT          reduce using rule 9 (term -> DIGIT .)
-    OR              reduce using rule 9 (term -> DIGIT .)
-    CONCAT          reduce using rule 9 (term -> DIGIT .)
-    NOT             reduce using rule 9 (term -> DIGIT .)
-    NAME            reduce using rule 9 (term -> DIGIT .)
-    DIGIT           reduce using rule 9 (term -> DIGIT .)
-    CHAR            reduce using rule 9 (term -> DIGIT .)
-    WORD            reduce using rule 9 (term -> DIGIT .)
-    CONST           reduce using rule 9 (term -> DIGIT .)
-
-
-state 14
-
-    (4) expr -> OR . expr expr
+    (8) expr -> NOT . expr
     (3) expr -> . REPEAT NUMBER expr
-    (4) expr -> . OR expr expr
-    (5) expr -> . CONCAT expr expr
-    (6) expr -> . NOT expr
-    (7) expr -> . term
-    (8) term -> . NAME
-    (9) term -> . DIGIT
-    (10) term -> . CHAR
-    (11) term -> . WORD
-    (12) term -> . CONST
+    (4) expr -> . REPEAT SEVERAL expr
+    (5) expr -> . REPEAT NUMBER TO NUMBER expr
+    (6) expr -> . OR expr expr
+    (7) expr -> . CONCAT expr expr
+    (8) expr -> . NOT expr
+    (9) expr -> . ONEOF NUMBER TO NUMBER
+    (10) expr -> . term
+    (11) term -> . NAME
+    (12) term -> . DIGIT
+    (13) term -> . CHAR
+    (14) term -> . WORD
+    (15) term -> . CONST
 
     REPEAT          shift and go to state 6
-    OR              shift and go to state 14
-    CONCAT          shift and go to state 15
-    NOT             shift and go to state 12
+    OR              shift and go to state 15
+    CONCAT          shift and go to state 16
+    NOT             shift and go to state 13
+    ONEOF           shift and go to state 5
     NAME            shift and go to state 8
-    DIGIT           shift and go to state 13
-    CHAR            shift and go to state 11
-    WORD            shift and go to state 7
-    CONST           shift and go to state 10
-
-    expr                           shift and go to state 18
-    term                           shift and go to state 5
-
-state 15
-
-    (5) expr -> CONCAT . expr expr
-    (3) expr -> . REPEAT NUMBER expr
-    (4) expr -> . OR expr expr
-    (5) expr -> . CONCAT expr expr
-    (6) expr -> . NOT expr
-    (7) expr -> . term
-    (8) term -> . NAME
-    (9) term -> . DIGIT
-    (10) term -> . CHAR
-    (11) term -> . WORD
-    (12) term -> . CONST
-
-    REPEAT          shift and go to state 6
-    OR              shift and go to state 14
-    CONCAT          shift and go to state 15
-    NOT             shift and go to state 12
-    NAME            shift and go to state 8
-    DIGIT           shift and go to state 13
-    CHAR            shift and go to state 11
-    WORD            shift and go to state 7
-    CONST           shift and go to state 10
-
-    expr                           shift and go to state 19
-    term                           shift and go to state 5
-
-state 16
-
-    (3) expr -> REPEAT NUMBER . expr
-    (3) expr -> . REPEAT NUMBER expr
-    (4) expr -> . OR expr expr
-    (5) expr -> . CONCAT expr expr
-    (6) expr -> . NOT expr
-    (7) expr -> . term
-    (8) term -> . NAME
-    (9) term -> . DIGIT
-    (10) term -> . CHAR
-    (11) term -> . WORD
-    (12) term -> . CONST
-
-    REPEAT          shift and go to state 6
-    OR              shift and go to state 14
-    CONCAT          shift and go to state 15
-    NOT             shift and go to state 12
-    NAME            shift and go to state 8
-    DIGIT           shift and go to state 13
+    DIGIT           shift and go to state 14
     CHAR            shift and go to state 11
     WORD            shift and go to state 7
     CONST           shift and go to state 10
 
     expr                           shift and go to state 20
-    term                           shift and go to state 5
+    term                           shift and go to state 12
 
-state 17
+state 14
 
-    (6) expr -> NOT expr .
+    (12) term -> DIGIT .
 
-    $end            reduce using rule 6 (expr -> NOT expr .)
-    REPEAT          reduce using rule 6 (expr -> NOT expr .)
-    OR              reduce using rule 6 (expr -> NOT expr .)
-    CONCAT          reduce using rule 6 (expr -> NOT expr .)
-    NOT             reduce using rule 6 (expr -> NOT expr .)
-    NAME            reduce using rule 6 (expr -> NOT expr .)
-    DIGIT           reduce using rule 6 (expr -> NOT expr .)
-    CHAR            reduce using rule 6 (expr -> NOT expr .)
-    WORD            reduce using rule 6 (expr -> NOT expr .)
-    CONST           reduce using rule 6 (expr -> NOT expr .)
+    $end            reduce using rule 12 (term -> DIGIT .)
+    REPEAT          reduce using rule 12 (term -> DIGIT .)
+    OR              reduce using rule 12 (term -> DIGIT .)
+    CONCAT          reduce using rule 12 (term -> DIGIT .)
+    NOT             reduce using rule 12 (term -> DIGIT .)
+    ONEOF           reduce using rule 12 (term -> DIGIT .)
+    NAME            reduce using rule 12 (term -> DIGIT .)
+    DIGIT           reduce using rule 12 (term -> DIGIT .)
+    CHAR            reduce using rule 12 (term -> DIGIT .)
+    WORD            reduce using rule 12 (term -> DIGIT .)
+    CONST           reduce using rule 12 (term -> DIGIT .)
 
 
-state 18
+state 15
 
-    (4) expr -> OR expr . expr
+    (6) expr -> OR . expr expr
     (3) expr -> . REPEAT NUMBER expr
-    (4) expr -> . OR expr expr
-    (5) expr -> . CONCAT expr expr
-    (6) expr -> . NOT expr
-    (7) expr -> . term
-    (8) term -> . NAME
-    (9) term -> . DIGIT
-    (10) term -> . CHAR
-    (11) term -> . WORD
-    (12) term -> . CONST
+    (4) expr -> . REPEAT SEVERAL expr
+    (5) expr -> . REPEAT NUMBER TO NUMBER expr
+    (6) expr -> . OR expr expr
+    (7) expr -> . CONCAT expr expr
+    (8) expr -> . NOT expr
+    (9) expr -> . ONEOF NUMBER TO NUMBER
+    (10) expr -> . term
+    (11) term -> . NAME
+    (12) term -> . DIGIT
+    (13) term -> . CHAR
+    (14) term -> . WORD
+    (15) term -> . CONST
 
     REPEAT          shift and go to state 6
-    OR              shift and go to state 14
-    CONCAT          shift and go to state 15
-    NOT             shift and go to state 12
+    OR              shift and go to state 15
+    CONCAT          shift and go to state 16
+    NOT             shift and go to state 13
+    ONEOF           shift and go to state 5
     NAME            shift and go to state 8
-    DIGIT           shift and go to state 13
+    DIGIT           shift and go to state 14
     CHAR            shift and go to state 11
     WORD            shift and go to state 7
     CONST           shift and go to state 10
 
     expr                           shift and go to state 21
-    term                           shift and go to state 5
+    term                           shift and go to state 12
 
-state 19
+state 16
 
-    (5) expr -> CONCAT expr . expr
+    (7) expr -> CONCAT . expr expr
     (3) expr -> . REPEAT NUMBER expr
-    (4) expr -> . OR expr expr
-    (5) expr -> . CONCAT expr expr
-    (6) expr -> . NOT expr
-    (7) expr -> . term
-    (8) term -> . NAME
-    (9) term -> . DIGIT
-    (10) term -> . CHAR
-    (11) term -> . WORD
-    (12) term -> . CONST
+    (4) expr -> . REPEAT SEVERAL expr
+    (5) expr -> . REPEAT NUMBER TO NUMBER expr
+    (6) expr -> . OR expr expr
+    (7) expr -> . CONCAT expr expr
+    (8) expr -> . NOT expr
+    (9) expr -> . ONEOF NUMBER TO NUMBER
+    (10) expr -> . term
+    (11) term -> . NAME
+    (12) term -> . DIGIT
+    (13) term -> . CHAR
+    (14) term -> . WORD
+    (15) term -> . CONST
 
     REPEAT          shift and go to state 6
-    OR              shift and go to state 14
-    CONCAT          shift and go to state 15
-    NOT             shift and go to state 12
+    OR              shift and go to state 15
+    CONCAT          shift and go to state 16
+    NOT             shift and go to state 13
+    ONEOF           shift and go to state 5
     NAME            shift and go to state 8
-    DIGIT           shift and go to state 13
+    DIGIT           shift and go to state 14
     CHAR            shift and go to state 11
     WORD            shift and go to state 7
     CONST           shift and go to state 10
 
     expr                           shift and go to state 22
-    term                           shift and go to state 5
+    term                           shift and go to state 12
+
+state 17
+
+    (9) expr -> ONEOF NUMBER . TO NUMBER
+
+    TO              shift and go to state 23
+
+
+state 18
+
+    (4) expr -> REPEAT SEVERAL . expr
+    (3) expr -> . REPEAT NUMBER expr
+    (4) expr -> . REPEAT SEVERAL expr
+    (5) expr -> . REPEAT NUMBER TO NUMBER expr
+    (6) expr -> . OR expr expr
+    (7) expr -> . CONCAT expr expr
+    (8) expr -> . NOT expr
+    (9) expr -> . ONEOF NUMBER TO NUMBER
+    (10) expr -> . term
+    (11) term -> . NAME
+    (12) term -> . DIGIT
+    (13) term -> . CHAR
+    (14) term -> . WORD
+    (15) term -> . CONST
+
+    REPEAT          shift and go to state 6
+    OR              shift and go to state 15
+    CONCAT          shift and go to state 16
+    NOT             shift and go to state 13
+    ONEOF           shift and go to state 5
+    NAME            shift and go to state 8
+    DIGIT           shift and go to state 14
+    CHAR            shift and go to state 11
+    WORD            shift and go to state 7
+    CONST           shift and go to state 10
+
+    expr                           shift and go to state 24
+    term                           shift and go to state 12
+
+state 19
+
+    (3) expr -> REPEAT NUMBER . expr
+    (5) expr -> REPEAT NUMBER . TO NUMBER expr
+    (3) expr -> . REPEAT NUMBER expr
+    (4) expr -> . REPEAT SEVERAL expr
+    (5) expr -> . REPEAT NUMBER TO NUMBER expr
+    (6) expr -> . OR expr expr
+    (7) expr -> . CONCAT expr expr
+    (8) expr -> . NOT expr
+    (9) expr -> . ONEOF NUMBER TO NUMBER
+    (10) expr -> . term
+    (11) term -> . NAME
+    (12) term -> . DIGIT
+    (13) term -> . CHAR
+    (14) term -> . WORD
+    (15) term -> . CONST
+
+    TO              shift and go to state 26
+    REPEAT          shift and go to state 6
+    OR              shift and go to state 15
+    CONCAT          shift and go to state 16
+    NOT             shift and go to state 13
+    ONEOF           shift and go to state 5
+    NAME            shift and go to state 8
+    DIGIT           shift and go to state 14
+    CHAR            shift and go to state 11
+    WORD            shift and go to state 7
+    CONST           shift and go to state 10
+
+    expr                           shift and go to state 25
+    term                           shift and go to state 12
 
 state 20
+
+    (8) expr -> NOT expr .
+
+    $end            reduce using rule 8 (expr -> NOT expr .)
+    REPEAT          reduce using rule 8 (expr -> NOT expr .)
+    OR              reduce using rule 8 (expr -> NOT expr .)
+    CONCAT          reduce using rule 8 (expr -> NOT expr .)
+    NOT             reduce using rule 8 (expr -> NOT expr .)
+    ONEOF           reduce using rule 8 (expr -> NOT expr .)
+    NAME            reduce using rule 8 (expr -> NOT expr .)
+    DIGIT           reduce using rule 8 (expr -> NOT expr .)
+    CHAR            reduce using rule 8 (expr -> NOT expr .)
+    WORD            reduce using rule 8 (expr -> NOT expr .)
+    CONST           reduce using rule 8 (expr -> NOT expr .)
+
+
+state 21
+
+    (6) expr -> OR expr . expr
+    (3) expr -> . REPEAT NUMBER expr
+    (4) expr -> . REPEAT SEVERAL expr
+    (5) expr -> . REPEAT NUMBER TO NUMBER expr
+    (6) expr -> . OR expr expr
+    (7) expr -> . CONCAT expr expr
+    (8) expr -> . NOT expr
+    (9) expr -> . ONEOF NUMBER TO NUMBER
+    (10) expr -> . term
+    (11) term -> . NAME
+    (12) term -> . DIGIT
+    (13) term -> . CHAR
+    (14) term -> . WORD
+    (15) term -> . CONST
+
+    REPEAT          shift and go to state 6
+    OR              shift and go to state 15
+    CONCAT          shift and go to state 16
+    NOT             shift and go to state 13
+    ONEOF           shift and go to state 5
+    NAME            shift and go to state 8
+    DIGIT           shift and go to state 14
+    CHAR            shift and go to state 11
+    WORD            shift and go to state 7
+    CONST           shift and go to state 10
+
+    expr                           shift and go to state 27
+    term                           shift and go to state 12
+
+state 22
+
+    (7) expr -> CONCAT expr . expr
+    (3) expr -> . REPEAT NUMBER expr
+    (4) expr -> . REPEAT SEVERAL expr
+    (5) expr -> . REPEAT NUMBER TO NUMBER expr
+    (6) expr -> . OR expr expr
+    (7) expr -> . CONCAT expr expr
+    (8) expr -> . NOT expr
+    (9) expr -> . ONEOF NUMBER TO NUMBER
+    (10) expr -> . term
+    (11) term -> . NAME
+    (12) term -> . DIGIT
+    (13) term -> . CHAR
+    (14) term -> . WORD
+    (15) term -> . CONST
+
+    REPEAT          shift and go to state 6
+    OR              shift and go to state 15
+    CONCAT          shift and go to state 16
+    NOT             shift and go to state 13
+    ONEOF           shift and go to state 5
+    NAME            shift and go to state 8
+    DIGIT           shift and go to state 14
+    CHAR            shift and go to state 11
+    WORD            shift and go to state 7
+    CONST           shift and go to state 10
+
+    expr                           shift and go to state 28
+    term                           shift and go to state 12
+
+state 23
+
+    (9) expr -> ONEOF NUMBER TO . NUMBER
+
+    NUMBER          shift and go to state 29
+
+
+state 24
+
+    (4) expr -> REPEAT SEVERAL expr .
+
+    $end            reduce using rule 4 (expr -> REPEAT SEVERAL expr .)
+    REPEAT          reduce using rule 4 (expr -> REPEAT SEVERAL expr .)
+    OR              reduce using rule 4 (expr -> REPEAT SEVERAL expr .)
+    CONCAT          reduce using rule 4 (expr -> REPEAT SEVERAL expr .)
+    NOT             reduce using rule 4 (expr -> REPEAT SEVERAL expr .)
+    ONEOF           reduce using rule 4 (expr -> REPEAT SEVERAL expr .)
+    NAME            reduce using rule 4 (expr -> REPEAT SEVERAL expr .)
+    DIGIT           reduce using rule 4 (expr -> REPEAT SEVERAL expr .)
+    CHAR            reduce using rule 4 (expr -> REPEAT SEVERAL expr .)
+    WORD            reduce using rule 4 (expr -> REPEAT SEVERAL expr .)
+    CONST           reduce using rule 4 (expr -> REPEAT SEVERAL expr .)
+
+
+state 25
 
     (3) expr -> REPEAT NUMBER expr .
 
@@ -395,6 +510,7 @@ state 20
     OR              reduce using rule 3 (expr -> REPEAT NUMBER expr .)
     CONCAT          reduce using rule 3 (expr -> REPEAT NUMBER expr .)
     NOT             reduce using rule 3 (expr -> REPEAT NUMBER expr .)
+    ONEOF           reduce using rule 3 (expr -> REPEAT NUMBER expr .)
     NAME            reduce using rule 3 (expr -> REPEAT NUMBER expr .)
     DIGIT           reduce using rule 3 (expr -> REPEAT NUMBER expr .)
     CHAR            reduce using rule 3 (expr -> REPEAT NUMBER expr .)
@@ -402,34 +518,108 @@ state 20
     CONST           reduce using rule 3 (expr -> REPEAT NUMBER expr .)
 
 
-state 21
+state 26
 
-    (4) expr -> OR expr expr .
+    (5) expr -> REPEAT NUMBER TO . NUMBER expr
 
-    $end            reduce using rule 4 (expr -> OR expr expr .)
-    REPEAT          reduce using rule 4 (expr -> OR expr expr .)
-    OR              reduce using rule 4 (expr -> OR expr expr .)
-    CONCAT          reduce using rule 4 (expr -> OR expr expr .)
-    NOT             reduce using rule 4 (expr -> OR expr expr .)
-    NAME            reduce using rule 4 (expr -> OR expr expr .)
-    DIGIT           reduce using rule 4 (expr -> OR expr expr .)
-    CHAR            reduce using rule 4 (expr -> OR expr expr .)
-    WORD            reduce using rule 4 (expr -> OR expr expr .)
-    CONST           reduce using rule 4 (expr -> OR expr expr .)
+    NUMBER          shift and go to state 30
 
 
-state 22
+state 27
 
-    (5) expr -> CONCAT expr expr .
+    (6) expr -> OR expr expr .
 
-    $end            reduce using rule 5 (expr -> CONCAT expr expr .)
-    REPEAT          reduce using rule 5 (expr -> CONCAT expr expr .)
-    OR              reduce using rule 5 (expr -> CONCAT expr expr .)
-    CONCAT          reduce using rule 5 (expr -> CONCAT expr expr .)
-    NOT             reduce using rule 5 (expr -> CONCAT expr expr .)
-    NAME            reduce using rule 5 (expr -> CONCAT expr expr .)
-    DIGIT           reduce using rule 5 (expr -> CONCAT expr expr .)
-    CHAR            reduce using rule 5 (expr -> CONCAT expr expr .)
-    WORD            reduce using rule 5 (expr -> CONCAT expr expr .)
-    CONST           reduce using rule 5 (expr -> CONCAT expr expr .)
+    $end            reduce using rule 6 (expr -> OR expr expr .)
+    REPEAT          reduce using rule 6 (expr -> OR expr expr .)
+    OR              reduce using rule 6 (expr -> OR expr expr .)
+    CONCAT          reduce using rule 6 (expr -> OR expr expr .)
+    NOT             reduce using rule 6 (expr -> OR expr expr .)
+    ONEOF           reduce using rule 6 (expr -> OR expr expr .)
+    NAME            reduce using rule 6 (expr -> OR expr expr .)
+    DIGIT           reduce using rule 6 (expr -> OR expr expr .)
+    CHAR            reduce using rule 6 (expr -> OR expr expr .)
+    WORD            reduce using rule 6 (expr -> OR expr expr .)
+    CONST           reduce using rule 6 (expr -> OR expr expr .)
+
+
+state 28
+
+    (7) expr -> CONCAT expr expr .
+
+    $end            reduce using rule 7 (expr -> CONCAT expr expr .)
+    REPEAT          reduce using rule 7 (expr -> CONCAT expr expr .)
+    OR              reduce using rule 7 (expr -> CONCAT expr expr .)
+    CONCAT          reduce using rule 7 (expr -> CONCAT expr expr .)
+    NOT             reduce using rule 7 (expr -> CONCAT expr expr .)
+    ONEOF           reduce using rule 7 (expr -> CONCAT expr expr .)
+    NAME            reduce using rule 7 (expr -> CONCAT expr expr .)
+    DIGIT           reduce using rule 7 (expr -> CONCAT expr expr .)
+    CHAR            reduce using rule 7 (expr -> CONCAT expr expr .)
+    WORD            reduce using rule 7 (expr -> CONCAT expr expr .)
+    CONST           reduce using rule 7 (expr -> CONCAT expr expr .)
+
+
+state 29
+
+    (9) expr -> ONEOF NUMBER TO NUMBER .
+
+    $end            reduce using rule 9 (expr -> ONEOF NUMBER TO NUMBER .)
+    REPEAT          reduce using rule 9 (expr -> ONEOF NUMBER TO NUMBER .)
+    OR              reduce using rule 9 (expr -> ONEOF NUMBER TO NUMBER .)
+    CONCAT          reduce using rule 9 (expr -> ONEOF NUMBER TO NUMBER .)
+    NOT             reduce using rule 9 (expr -> ONEOF NUMBER TO NUMBER .)
+    ONEOF           reduce using rule 9 (expr -> ONEOF NUMBER TO NUMBER .)
+    NAME            reduce using rule 9 (expr -> ONEOF NUMBER TO NUMBER .)
+    DIGIT           reduce using rule 9 (expr -> ONEOF NUMBER TO NUMBER .)
+    CHAR            reduce using rule 9 (expr -> ONEOF NUMBER TO NUMBER .)
+    WORD            reduce using rule 9 (expr -> ONEOF NUMBER TO NUMBER .)
+    CONST           reduce using rule 9 (expr -> ONEOF NUMBER TO NUMBER .)
+
+
+state 30
+
+    (5) expr -> REPEAT NUMBER TO NUMBER . expr
+    (3) expr -> . REPEAT NUMBER expr
+    (4) expr -> . REPEAT SEVERAL expr
+    (5) expr -> . REPEAT NUMBER TO NUMBER expr
+    (6) expr -> . OR expr expr
+    (7) expr -> . CONCAT expr expr
+    (8) expr -> . NOT expr
+    (9) expr -> . ONEOF NUMBER TO NUMBER
+    (10) expr -> . term
+    (11) term -> . NAME
+    (12) term -> . DIGIT
+    (13) term -> . CHAR
+    (14) term -> . WORD
+    (15) term -> . CONST
+
+    REPEAT          shift and go to state 6
+    OR              shift and go to state 15
+    CONCAT          shift and go to state 16
+    NOT             shift and go to state 13
+    ONEOF           shift and go to state 5
+    NAME            shift and go to state 8
+    DIGIT           shift and go to state 14
+    CHAR            shift and go to state 11
+    WORD            shift and go to state 7
+    CONST           shift and go to state 10
+
+    expr                           shift and go to state 31
+    term                           shift and go to state 12
+
+state 31
+
+    (5) expr -> REPEAT NUMBER TO NUMBER expr .
+
+    $end            reduce using rule 5 (expr -> REPEAT NUMBER TO NUMBER expr .)
+    REPEAT          reduce using rule 5 (expr -> REPEAT NUMBER TO NUMBER expr .)
+    OR              reduce using rule 5 (expr -> REPEAT NUMBER TO NUMBER expr .)
+    CONCAT          reduce using rule 5 (expr -> REPEAT NUMBER TO NUMBER expr .)
+    NOT             reduce using rule 5 (expr -> REPEAT NUMBER TO NUMBER expr .)
+    ONEOF           reduce using rule 5 (expr -> REPEAT NUMBER TO NUMBER expr .)
+    NAME            reduce using rule 5 (expr -> REPEAT NUMBER TO NUMBER expr .)
+    DIGIT           reduce using rule 5 (expr -> REPEAT NUMBER TO NUMBER expr .)
+    CHAR            reduce using rule 5 (expr -> REPEAT NUMBER TO NUMBER expr .)
+    WORD            reduce using rule 5 (expr -> REPEAT NUMBER TO NUMBER expr .)
+    CONST           reduce using rule 5 (expr -> REPEAT NUMBER TO NUMBER expr .)
 
