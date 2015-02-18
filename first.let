@@ -5,5 +5,10 @@ let _d be or _b _c
 let _e be char
 let _f be one of 0-9
 let _g be repeat several _f
-let _h be concat _d _e
+let _h be _d and _e
 let _i be or _h _g
+let _j be word end "er"
+let _k be repeat several lowcase
+let _l be word has 3 one of "aeiou"
+let _m be word begin "aaa"
+LET _part2 BE WORD HAS 3 ONE OF "aeiou"
