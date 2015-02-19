@@ -29,7 +29,7 @@ def p_expr_repeat_range(p):
 
 def p_expr_and(p):
 	'expr : expr AND expr'
-	p[0] = '( ' + p[1] + p[3] + ')'
+	p[0] = p[1] + p[3] 
 
 def p_expr_or(p):
 	'expr : OR expr expr'
@@ -37,7 +37,7 @@ def p_expr_or(p):
 
 def p_expr_concat(p):
 	'expr : CONCAT expr expr'
-	p[0] = '( ' + p[2] + p[3] + " )"
+	p[0] = p[2] + p[3]
 
 def p_expr_not(p):
 	'expr : NOT expr'
@@ -45,11 +45,11 @@ def p_expr_not(p):
 
 def p_expr_to(p):
 	'expr : ONEOF NUMBER TO NUMBER'
-	p[0] = '( ' + '[' + p[2] + '-' + p[4] + ']' + " )"
+	p[0] = '[' + p[2] + '-' + p[4] + ']'
 
 def p_expr_term(p):
 	'expr : term'
-	p[0] = '( ' + p[1] + " )"
+	p[0] = p[1] 
 
 def p_expr_word_end(p):
 	'expr : WORD END expr'
