@@ -21,14 +21,24 @@ The syntax of Let-Language is elaborated in BNF(Backus–Naur Form)
 ```
 assign ::= LET NAME BE expr
 expr ::= REPEAT NUMBER expr
+	   | REPEAT ONEMORE expr
+	   | REPEAT ZEROMORE expr
        | OR expr expr
        | NOT expr
        | CONCAT expr expr
+       | expr END expr
+       | expr HAS expr
+       | expr BEGIN expr
        | term
 term ::= DIGIT
        | WORD
        | CHAR
        | CONST
+       | BLANK
+       | LETTER
+       | LOWCASE
+       | UPCASE
+       | NUMBER TO NUMBER
 ```
 
 ### Inplementation
