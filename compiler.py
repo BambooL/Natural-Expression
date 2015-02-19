@@ -3,7 +3,7 @@ import sys
 
 # filename = raw_input('--> ')
 
-filename = "first.let"
+filename = "let/dna.let"
 fo = open(filename, "rw+")
 
 lines = fo.readlines()

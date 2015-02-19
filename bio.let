@@ -1,0 +1,6 @@
+let _part1 be "fgf"
+let _part2 be repeat several blank 
+let _part3 be or _part2 "-"
+let _part4 be repeat several _part3
+let _part5 be repeat several digit
+let _expression be _part1 and _part3 and _part4

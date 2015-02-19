@@ -17,11 +17,15 @@ def p_assign(p):
 
 def p_expr_repeat(p):
 	'expr : REPEAT NUMBER expr'
-	p[0] = '( ' + p[3] + " { " + p[2] + " } " + " )"
+	p[0] = p[3] + " { " + p[2] + " } "
 
-def p_expr_repeat_several(p):
-	'expr : REPEAT SEVERAL expr'
-	p[0] = '( ' + p[3] + "*" + " )"
+def p_expr_repeat_zeromore(p):
+	'expr : REPEAT ZEROMORE expr'
+	p[0] = p[3] + "*" 
+
+def p_expr_repeat_onemore(p):
+	'expr : REPEAT ONEMORE expr'
+	p[0] = p[3] + "+" 
 
 def p_expr_repeat_range(p):
 	'expr : REPEAT NUMBER TO NUMBER expr'
@@ -75,21 +79,6 @@ def p_expr_word_begin(p):
 		p[3] = p[3][1:-1]
 	p[0] = '( ' + '\\b' + p[3] + '[a-zA-Z]*' + '\\b' + " )"
 
-
-# def p_term(p):
-# 	'''term : DIGIT
-# 	| CHAR
-# 	| WORD
-# 	| CONST'''
-# 	if (p[1] == 'digit'):
-# 		p[0] = '\\d'
-# 	elif (p[1] == 'char'):
-# 		p[0] = '\w'
-# 	elif (p[1] == 'word'):
-# 		p[0] = '[a-zA-Z]+'
-# 	else:
-# 		p[0] = p[1]
-
 def p_term_name(p):
 	'term : NAME'
 	if (names[p[1]]):
@@ -125,6 +114,10 @@ def p_term_CONST(p):
 	'term : CONST'
 	p[1] = p[1][1:-1]
 	p[0] = p[1]
+
+def p_term_BLANK(p):
+	'term : BLANK'
+	p[0] = '\s'
 
 def p_term_oneof(p):
 	'term : ONEOF CONST'
