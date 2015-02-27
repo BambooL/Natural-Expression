@@ -78,11 +78,11 @@ let _part2 be repeat onemore blank
 let _part3 be or _part2 "-"
 let _part4 be repeat zeromore _part3
 let _part5 be repeat onemore digit
-let _expression be _part1 and _part3 and _part5
+let _expression be _part1 and _part4 and _part5
 ```
 The regular expression generated(_expression):
 ```
-fgf( \s+ | - )\d+
+fgf( \s+ | - )*\d+
 ```
 
 * To generate DNA sequence (let/dna.let) to match nucleotide sequence
@@ -99,3 +99,7 @@ The regular expression generated(_expression):
 ```
 AC[ATW]T[ACM]A[ACGTRYKMSWBDHVN]
 ```
+
+## Applications of regular expression
+* Regular Expressions for IPS
+

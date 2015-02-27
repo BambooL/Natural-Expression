@@ -4,16 +4,25 @@ import lexer # Import lexer information
 tokens = lexer.tokens # Need token list
 names = { }
 
+# assignment
+
 def p_assign(p):
 	'''assign : LET NAME BE expr'''
 	names[p[2]] = p[4]
 
-# def p_print(p):
-# 	'show : PRINT expr'
-# 	if (names[p[2]]):
-# 		print names[p[2]]
-# 	else:
-# 		print "Sorry, no this value!"
+# def p_assign_in_scope(p):
+# 	'assign : LET new_scope NAME BE expr IN assign'
+# 	p[3] = p[5]
+# 	pop_scope()
+
+
+# def p_new_scope(p):
+#     'new_scope :'
+#     # Create a new scope for local variables
+#     s = new_scope()
+#     push_scope(s)
+
+# expression
 
 def p_expr_repeat(p):
 	'expr : REPEAT NUMBER expr'
@@ -79,6 +88,7 @@ def p_expr_word_begin(p):
 		p[3] = p[3][1:-1]
 	p[0] = '( ' + '\\b' + p[3] + '[a-zA-Z]*' + '\\b' + " )"
 
+# term
 def p_term_name(p):
 	'term : NAME'
 	if (names[p[1]]):
