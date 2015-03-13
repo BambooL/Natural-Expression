@@ -3,7 +3,7 @@ import sys
 
 # filename = raw_input('--> ')
 
-filename = "let/bio.let"
+filename = "let/torrent.let"
 fo = open(filename, "rw+")
 
 lines = fo.readlines()

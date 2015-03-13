@@ -38,15 +38,15 @@ def p_expr_repeat_onemore(p):
 
 def p_expr_repeat_range(p):
 	'expr : REPEAT NUMBER TO NUMBER expr'
-	p[0] = '( ' + p[5] + "{" + p[2] + "," + p[3] + "}" + " )"
+	p[0] = '( ' + p[5] + "{" + p[2] + "," + p[4] + "}" + " )"
 
 def p_expr_and(p):
 	'expr : expr AND expr'
 	p[0] = p[1] + p[3] 
 
 def p_expr_or(p):
-	'expr : OR expr expr'
-	p[0] = '( ' + p[2] + " | " + p[3] + " )"
+	'expr : expr OR expr'
+	p[0] = '( ' + p[1] + " | " + p[3] + " )"
 
 def p_expr_concat(p):
 	'expr : CONCAT expr expr'
@@ -134,6 +134,10 @@ def p_term_oneof(p):
 	if (p[2][0] == "\"" and p[2][-1] == "\""):
 		p[2] = p[2][1:-1]
 	p[0] = '[' + p[2] + ']'
+
+def p_term_onezero(p):
+	'term : ONEZERO term'
+	p[0] = p[2] + '?'
 
 def p_error(p):
     print("Syntax error at '%s'" % p.value)

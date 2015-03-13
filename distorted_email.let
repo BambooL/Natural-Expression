@@ -1,0 +1,14 @@
+(?'Username'[-\w\d\.]+?)(?:\s+at\s+|\s*@\s*|\s*(?:[\[\]@]){3}\s*)(?'Domain'[-\w\d\.]*?)\s*(?:dot|\.|(?:[\[\]dot\.]){3,5})\s*(?'TLD'\w+)
+
+let _character be "-" or letter or digit or "\."
+let _Username be onemore _character
+let _option1 be onemore blanks and "at" and onemore blanks
+let _option2 be zeromore blanks and "@" and zeromore blanks
+let _option3 be zeromore blanks and repeat 3 oneof "\[\]@" and zeromore blanks
+let _part2 be _option1 or _option2 or _option3
+let _domain be onemore _character
+let _blanks be zeromore blanks
+let _option be repeat 3 to 5 oneof "\[\]dot\."
+let _part5 be "dot" or "\." or _option
+let _TLD be onemore char
+let _email be _Username and _part2 and _domain and _blanks and _part5 and _blanks and _TLD
