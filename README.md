@@ -17,33 +17,33 @@ let _e be not _d
 ```
 
 ### syntax
-The syntax of Let-Language is elaborated in BNF(Backus–Naur Form)
+The syntax of Let-Language is elaborated in BNF(Backus–Naur Form). Upper-cased Tokens are tokens in the lexer. 
 ```
-assign ::= LET NAME BE expr
-expr ::= REPEAT NUMBER expr
-	   | REPEAT ONEMORE expr
-	   | REPEAT ZEROMORE expr
-          | REPEAT NUMBER TO NUMBER expr
-       | expr OR expr
-       | NOT expr
-       | expr AND expr
-       | ONEZERO expr
+assign ::= LET NAME BE expr [let _variable be digit -> _variable:\d]
+expr ::= REPEAT NUMBER expr [let _variable be repeat 4 digit -> _variable: \d{4}]
+	   | REPEAT ONEMORE expr [let _variable be repeat onemore digit -> _variable: \d+]
+	   | REPEAT ZEROMORE expr [let _variable be repeat zeromore digit -> _varaible: \d*]
+          | REPEAT NUMBER TO NUMBER expr [let _variable be repeat 3 to 5 digit -> _varaible: \d{3,5}]
+       | expr OR expr [let _variable be digit or letter -> _variable: \d|[a-zA-Z]
+       | NOT expr [let _variable be not digit -> _variable: ^\d]
+       | expr AND expr [let _variable be digit and letter -> _variable: \d[a-zA-Z]
+       | ONEZERO expr [let _variable be onezero digit -> _variable: \d?]
        | term
-term ::= DIGIT
-       | CHAR
-       | LETTER
-       | WORD
-       | WORD END expr
-       | WORD HAS expr
-       | WORD BEGIN expr
-       | CHAR
-       | CONST
-       | BLANK
-       | LETTER
-       | LOWCASE
-       | UPCASE
-       | ONEOF NUMBER TO NUMBER
-       | NUMBER TO NUMBER
+term ::= DIGIT [let _variable be digit -> _variable: \d]
+       | CHAR [let _variable be char -> _variable: \w]
+       | LETTER [let _variable be letter -> _variable: [a-zA-Z]]
+       | WORD [let _variable be word -> _variable: \w+]
+       | WORD END expr [let _variable be word end "er" -> _variable: \b[a-zA-Z]*er\b]
+       | WORD HAS expr [let _variable be word has "er" -> _variable: \b[a-zA-Z]* er [a-zA-Z]*\b]
+       | WORD BEGIN expr [let _variable be word begin "er" -> _variable: \ber[a-zA-Z]*\b]
+       | CHAR [let _variable be char -> _variable: \w]
+       | CONST [let _variable be "er" -> _variable: er]
+       | BLANK [let _variable be blank -> _variable: \s]
+       | LETTER [let _variable be letter -> _variable: [a-zA-Z]]
+       | LOWCASE [let _variable be lowcase -> _variable: [a-z]]
+       | UPCASE [let _variable be upcase -> _variable: [A-Z]]
+       | ONEOF NUMBER TO NUMBER [let _variable be one of 1 to 9 -> _variable: [1-9]]
+       | NUMBER TO NUMBER [let _variable be repeat 3 to 5 digit -> _varaible: \d{3,5}]
 ```
 
 ### Inplementation
