@@ -2,7 +2,7 @@ import lex
 
 
 
-tokens = [ 'LET', 'BE', 'NAME', 'REPEAT', 'OR', 'NOT', 'CONCAT', 'DIGIT', 'CHAR', 'LETTER', 'WORD', 'CONST', 'NUMBER', 'BLANK', 'LOWCASE', 'UPCASE', 'PRINT', 'ONEMORE','ONEZERO', 'ZEROMORE', 'TO', 'ONEOF', 'AND', 'END', 'BEGIN', 'HAS' ]
+tokens = [ 'LSCOPE', 'RSCOPE', 'IN', 'LET', 'BE', 'NAME', 'REPEAT', 'OR', 'NOT', 'CONCAT', 'DIGIT', 'CHAR', 'LETTER', 'WORD', 'CONST', 'NUMBER', 'BLANK', 'LOWCASE', 'UPCASE', 'PRINT', 'ONEMORE','ONEZERO', 'ZEROMORE', 'TO', 'ONEOF', 'AND', 'END', 'BEGIN', 'HAS' ]
 
 t_ignore = r' \t'
 t_LET = r'[l|L][e|E][t|T]'
@@ -31,6 +31,9 @@ t_WORD = r'[w|W][o|O][r|R][d|D]'
 t_NAME = r'[_][a-zA-Z0-9_]*'
 t_CONST = r'[\"\'][^\"\']*[\"\']'
 t_NUMBER = r'\d+'
+t_IN = r'[i|I][n|N]'
+t_LSCOPE = r'[\[\{]'
+t_RSCOPE = r'[\]\}]'
 
 
 

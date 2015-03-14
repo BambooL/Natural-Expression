@@ -23,21 +23,26 @@ assign ::= LET NAME BE expr
 expr ::= REPEAT NUMBER expr
 	   | REPEAT ONEMORE expr
 	   | REPEAT ZEROMORE expr
-       | OR expr expr
+          | REPEAT NUMBER TO NUMBER expr
+       | expr OR expr
        | NOT expr
-       | CONCAT expr expr
-       | expr END expr
-       | expr HAS expr
-       | expr BEGIN expr
+       | expr AND expr
+       | ONEZERO expr
        | term
 term ::= DIGIT
+       | CHAR
+       | LETTER
        | WORD
+       | WORD END expr
+       | WORD HAS expr
+       | WORD BEGIN expr
        | CHAR
        | CONST
        | BLANK
        | LETTER
        | LOWCASE
        | UPCASE
+       | ONEOF NUMBER TO NUMBER
        | NUMBER TO NUMBER
 ```
 
@@ -51,17 +56,17 @@ Let-Language is build upon PLY(Python Lex-Yacc).
 let _a be digit
 let _b be repeat 2 _a
 let _c be word
-let _d be or _b _c
+let _d be _b or _c
 let _e be char
 let _f be one of 1-8
 let _g be repeat zeromore _f
 let _h be _d and _e
-let _i be or _h _g
+let _i be _h or _g
 let _j be word end "er"
 let _k be repeat zeromore lowcase
 let _l be word has 3 one of "aeiou"
 let _m be word begin "aaa"
-let _n be or _j _l
+let _n be _j or _l
 let _o be _k and _m
 let _p be repeat zeromore _o
 let _q be _n and _p and _i
@@ -167,7 +172,6 @@ The regular expression generated(_torrent):
 ```
 ( - | \w )+(   | . )?( - | \w )+(   | . )?*( ( ( ^\d(   | . )?+ )season(   | . )??\d\d?e\d\d?( -e\d\d? | x\d\d? )? | [([]?\d[)]]? { 4 }  ) | ( BOXSET | ( XVID | ( DIVX | ( LIMITED | ( UNRATED | ( PROPER | ( DTS | ( AC3 | ( AAC | ( BLURAY | ( HD( TV | DVD ) | ( ( DVD | ( BD | ( BR | WEBRIP ) ) ) | ( \dp+ | [hx].?264 ) ) ) ) ) ) ) ) ) ) ) ) ) )
 ```
-
 
 
 ## Applications of regular expression
