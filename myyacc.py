@@ -11,8 +11,6 @@ def p_assign(p):
 	'''assign : LET NAME BE expr'''
 	names[p[2]] = p[4]
 
-def p_assign_block(p):
-	'assign'
 
 # def p_assign_in_scope(p):
 # 	'assign : LET new_scope NAME BE expr IN assign'

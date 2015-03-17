@@ -2,9 +2,10 @@ import lex
 
 
 
-tokens = [ 'LSCOPE', 'RSCOPE', 'IN', 'LET', 'BE', 'NAME', 'REPEAT', 'OR', 'NOT', 'CONCAT', 'DIGIT', 'CHAR', 'LETTER', 'WORD', 'CONST', 'NUMBER', 'BLANK', 'LOWCASE', 'UPCASE', 'PRINT', 'ONEMORE','ONEZERO', 'ZEROMORE', 'TO', 'ONEOF', 'AND', 'END', 'BEGIN', 'HAS' ]
+tokens = [ 'LSCOPE', 'RSCOPE', 'RETURN', 'IN', 'LET', 'BE', 'NAME', 'REPEAT', 'OR', 'NOT', 'CONCAT', 'DIGIT', 'CHAR', 'LETTER', 'WORD', 'CONST', 'NUMBER', 'BLANK', 'LOWCASE', 'UPCASE', 'PRINT', 'ONEMORE','ONEZERO', 'ZEROMORE', 'TO', 'ONEOF', 'AND', 'END', 'BEGIN', 'HAS' ]
 
 t_ignore = r' \t'
+t_RETURN = r'(\n\r|\n|\r)'
 t_LET = r'[l|L][e|E][t|T]'
 t_BE = r'[b|B][e|E]'
 t_REPEAT = r'[r|R][e|E][p|P][e|E][a|A][t|T]'
@@ -19,7 +20,7 @@ t_BEGIN = r'[b|B][e|E][G|g][i|I][n|N]'
 t_HAS = r'[h|H][a|A][s|S]'
 t_LOWCASE = r'[l|L][o|O][w|W][c|C][a|A][s|S][e|E]'
 t_UPCASE = r'[u|U][p|P][c|C][a|A][s|S][e|E]'
-t_BLANK = r'[b|B][l|L][a|A][n|N][k|K][s|S|]'
+t_BLANK = r'[b|B][l|L][a|A][n|N][k|K][s|S|\s]'
 t_ONEMORE = r'[o|O][n|N][e|E][m|M][o|O][r|R][e|E]'
 t_ZEROMORE = r'[z|Z][e|E][r|R][o|O][m|M][o|O][r|R][e|E]'
 t_ONEZERO = r'[o|O][n|N][e|E][z|Z][e|E][r|R][o|O]'

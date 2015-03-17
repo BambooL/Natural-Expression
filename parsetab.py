@@ -5,7 +5,7 @@ _tabversion = '3.2'
 
 _lr_method = 'LALR'
 
-_lr_signature = '\xde\x9d\x92\xe5m\xff\xc8d\x7f\xd8\x1aB\xb2\xd7\x02\x19'
+_lr_signature = '\x0b\xb0\x8d9\xac\xa2\x89~\xa6\xf7^\xaal\xa8?\xd7'
     
 _lr_action_items = {'BE':([3,],[4,]),'CONST':([4,5,6,7,8,9,10,11,13,14,15,16,18,19,20,21,22,23,25,26,27,28,29,30,31,33,34,35,36,37,38,39,40,41,43,45,46,47,48,49,50,],[5,-22,-17,5,-21,5,-23,-16,-11,-18,31,-15,-20,-19,5,5,5,5,-21,-25,31,5,5,5,-24,5,5,-9,-8,-12,-14,5,-3,-4,-2,-6,-7,-13,5,-10,-5,]),'NUMBER':([12,15,24,42,44,],[30,32,39,48,49,]),'CHAR':([4,5,6,7,8,9,10,11,13,14,16,18,19,20,21,22,23,25,26,28,29,30,31,33,34,35,36,37,38,39,40,41,43,45,46,47,48,49,50,],[6,-22,-17,6,-21,6,-23,-16,-11,-18,-15,-20,-19,6,6,6,6,-21,-25,6,6,6,-24,6,6,-9,-8,-12,-14,6,-3,-4,-2,-6,-7,-13,6,-10,-5,]),'ZEROMORE':([12,],[28,]),'CONCAT':([4,5,6,7,8,10,11,13,14,16,18,19,20,21,22,23,25,26,28,29,30,31,33,34,35,36,37,38,40,41,43,45,46,47,48,49,50,],[7,-22,-17,7,-21,-23,-16,-11,-18,-15,-20,-19,7,7,7,7,-21,-25,7,7,7,-24,7,7,-9,-8,-12,-14,-3,-4,-2,-6,-7,-13,7,-10,-5,]),'BEGIN':([8,],[23,]),'WORD':([4,5,6,7,8,9,10,11,13,14,16,18,19,20,21,22,23,25,26,28,29,30,31,33,34,35,36,37,38,39,40,41,43,45,46,47,48,49,50,],[8,-22,-17,8,-21,25,-23,-16,-11,-18,-15,-20,-19,8,8,8,8,-21,-25,8,8,8,-24,8,8,-9,-8,-12,-14,25,-3,-4,-2,-6,-7,-13,8,-10,-5,]),'ONEZERO':([4,5,6,7,8,9,10,11,13,14,16,18,19,20,21,22,23,25,26,28,29,30,31,33,34,35,36,37,38,39,40,41,43,45,46,47,48,49,50,],[9,-22,-17,9,-21,9,-23,-16,-11,-18,-15,-20,-19,9,9,9,9,-21,-25,9,9,9,-24,9,9,-9,-8,-12,-14,9,-3,-4,-2,-6,-7,-13,9,-10,-5,]),'TO':([30,32,],[42,44,]),'BLANK':([4,5,6,7,8,9,10,11,13,14,16,18,19,20,21,22,23,25,26,28,29,30,31,33,34,35,36,37,38,39,40,41,43,45,46,47,48,49,50,],[10,-22,-17,10,-21,10,-23,-16,-11,-18,-15,-20,-19,10,10,10,10,-21,-25,10,10,10,-24,10,10,-9,-8,-12,-14,10,-3,-4,-2,-6,-7,-13,10,-10,-5,]),'$end':([2,5,6,8,10,11,13,14,16,17,18,19,25,26,31,35,36,37,38,40,41,43,45,46,47,49,50,],[0,-22,-17,-21,-23,-16,-11,-18,-15,-1,-20,-19,-21,-25,-24,-9,-8,-12,-14,-3,-4,-2,-6,-7,-13,-10,-5,]),'REPEAT':([4,5,6,7,8,10,11,13,14,16,18,19,20,21,22,23,25,26,28,29,30,31,33,34,35,36,37,38,40,41,43,45,46,47,48,49,50,],[12,-22,-17,12,-21,-23,-16,-11,-18,-15,-20,-19,12,12,12,12,-21,-25,12,12,12,-24,12,12,-9,-8,-12,-14,-3,-4,-2,-6,-7,-13,12,-10,-5,]),'END':([8,],[22,]),'ONEMORE':([12,],[29,]),'DIGIT':([4,5,6,7,8,9,10,11,13,14,16,18,19,20,21,22,23,25,26,28,29,30,31,33,34,35,36,37,38,39,40,41,43,45,46,47,48,49,50,],[11,-22,-17,11,-21,11,-23,-16,-11,-18,-15,-20,-19,11,11,11,11,-21,-25,11,11,11,-24,11,11,-9,-8,-12,-14,11,-3,-4,-2,-6,-7,-13,11,-10,-5,]),'LETTER':([4,5,6,7,8,9,10,11,13,14,16,18,19,20,21,22,23,25,26,28,29,30,31,33,34,35,36,37,38,39,40,41,43,45,46,47,48,49,50,],[14,-22,-17,14,-21,14,-23,-16,-11,-18,-15,-20,-19,14,14,14,14,-21,-25,14,14,14,-24,14,14,-9,-8,-12,-14,14,-3,-4,-2,-6,-7,-13,14,-10,-5,]),'HAS':([8,],[24,]),'AND':([5,6,8,10,11,13,14,16,17,18,19,21,25,26,31,35,36,37,38,40,41,43,45,46,47,49,50,],[-22,-17,-21,-23,-16,-11,-18,-15,33,-20,-19,33,-21,-25,-24,33,33,33,33,33,33,33,33,33,-13,-10,33,]),'ONEOF':([4,5,6,7,8,9,10,11,13,14,16,18,19,20,21,22,23,25,26,28,29,30,31,33,34,35,36,37,38,39,40,41,43,45,46,47,48,49,50,],[15,-22,-17,15,-21,27,-23,-16,-11,-18,-15,-20,-19,15,15,15,15,-21,-25,15,15,15,-24,15,15,-9,-8,-12,-14,27,-3,-4,-2,-6,-7,-13,15,-10,-5,]),'NAME':([1,4,5,6,7,8,9,10,11,13,14,16,18,19,20,21,22,23,25,26,28,29,30,31,33,34,35,36,37,38,39,40,41,43,45,46,47,48,49,50,],[3,16,-22,-17,16,-21,16,-23,-16,-11,-18,-15,-20,-19,16,16,16,16,-21,-25,16,16,16,-24,16,16,-9,-8,-12,-14,16,-3,-4,-2,-6,-7,-13,16,-10,-5,]),'LOWCASE':([4,5,6,7,8,9,10,11,13,14,16,18,19,20,21,22,23,25,26,28,29,30,31,33,34,35,36,37,38,39,40,41,43,45,46,47,48,49,50,],[18,-22,-17,18,-21,18,-23,-16,-11,-18,-15,-20,-19,18,18,18,18,-21,-25,18,18,18,-24,18,18,-9,-8,-12,-14,18,-3,-4,-2,-6,-7,-13,18,-10,-5,]),'LET':([0,],[1,]),'UPCASE':([4,5,6,7,8,9,10,11,13,14,16,18,19,20,21,22,23,25,26,28,29,30,31,33,34,35,36,37,38,39,40,41,43,45,46,47,48,49,50,],[19,-22,-17,19,-21,19,-23,-16,-11,-18,-15,-20,-19,19,19,19,19,-21,-25,19,19,19,-24,19,19,-9,-8,-12,-14,19,-3,-4,-2,-6,-7,-13,19,-10,-5,]),'NOT':([4,5,6,7,8,10,11,13,14,16,18,19,20,21,22,23,25,26,28,29,30,31,33,34,35,36,37,38,40,41,43,45,46,47,48,49,50,],[20,-22,-17,20,-21,-23,-16,-11,-18,-15,-20,-19,20,20,20,20,-21,-25,20,20,20,-24,20,20,-9,-8,-12,-14,-3,-4,-2,-6,-7,-13,20,-10,-5,]),'OR':([5,6,8,10,11,13,14,16,17,18,19,21,25,26,31,35,36,37,38,40,41,43,45,46,47,49,50,],[-22,-17,-21,-23,-16,-11,-18,-15,34,-20,-19,34,-21,-25,-24,34,34,34,34,34,34,34,34,34,-13,-10,34,]),}
 
@@ -26,29 +26,29 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> assign","S'",1,None,None,None),
-  ('assign -> LET NAME BE expr','assign',4,'p_assign','/Users/bambool/Desktop/let/myyacc.py',10),
-  ('expr -> REPEAT NUMBER expr','expr',3,'p_expr_repeat','/Users/bambool/Desktop/let/myyacc.py',28),
-  ('expr -> REPEAT ZEROMORE expr','expr',3,'p_expr_repeat_zeromore','/Users/bambool/Desktop/let/myyacc.py',32),
-  ('expr -> REPEAT ONEMORE expr','expr',3,'p_expr_repeat_onemore','/Users/bambool/Desktop/let/myyacc.py',36),
-  ('expr -> REPEAT NUMBER TO NUMBER expr','expr',5,'p_expr_repeat_range','/Users/bambool/Desktop/let/myyacc.py',40),
-  ('expr -> expr AND expr','expr',3,'p_expr_and','/Users/bambool/Desktop/let/myyacc.py',44),
-  ('expr -> expr OR expr','expr',3,'p_expr_or','/Users/bambool/Desktop/let/myyacc.py',48),
-  ('expr -> CONCAT expr expr','expr',3,'p_expr_concat','/Users/bambool/Desktop/let/myyacc.py',52),
-  ('expr -> NOT expr','expr',2,'p_expr_not','/Users/bambool/Desktop/let/myyacc.py',56),
-  ('expr -> ONEOF NUMBER TO NUMBER','expr',4,'p_expr_to','/Users/bambool/Desktop/let/myyacc.py',60),
-  ('expr -> term','expr',1,'p_expr_term','/Users/bambool/Desktop/let/myyacc.py',64),
-  ('expr -> WORD END expr','expr',3,'p_expr_word_end','/Users/bambool/Desktop/let/myyacc.py',68),
-  ('expr -> WORD HAS NUMBER term','expr',4,'p_expr_word_has','/Users/bambool/Desktop/let/myyacc.py',80),
-  ('expr -> WORD BEGIN expr','expr',3,'p_expr_word_begin','/Users/bambool/Desktop/let/myyacc.py',86),
-  ('term -> NAME','term',1,'p_term_name','/Users/bambool/Desktop/let/myyacc.py',93),
-  ('term -> DIGIT','term',1,'p_term_digit','/Users/bambool/Desktop/let/myyacc.py',100),
-  ('term -> CHAR','term',1,'p_term_char','/Users/bambool/Desktop/let/myyacc.py',104),
-  ('term -> LETTER','term',1,'p_term_letter','/Users/bambool/Desktop/let/myyacc.py',108),
-  ('term -> UPCASE','term',1,'p_term_up_letter','/Users/bambool/Desktop/let/myyacc.py',112),
-  ('term -> LOWCASE','term',1,'p_term_low_letter','/Users/bambool/Desktop/let/myyacc.py',116),
-  ('term -> WORD','term',1,'p_term_word','/Users/bambool/Desktop/let/myyacc.py',120),
-  ('term -> CONST','term',1,'p_term_CONST','/Users/bambool/Desktop/let/myyacc.py',124),
-  ('term -> BLANK','term',1,'p_term_BLANK','/Users/bambool/Desktop/let/myyacc.py',129),
-  ('term -> ONEOF CONST','term',2,'p_term_oneof','/Users/bambool/Desktop/let/myyacc.py',133),
-  ('term -> ONEZERO term','term',2,'p_term_onezero','/Users/bambool/Desktop/let/myyacc.py',139),
+  ('assign -> LET NAME BE expr','assign',4,'p_assign','/Users/bambool/Desktop/let/myyacc.py',11),
+  ('expr -> REPEAT NUMBER expr','expr',3,'p_expr_repeat','/Users/bambool/Desktop/let/myyacc.py',30),
+  ('expr -> REPEAT ZEROMORE expr','expr',3,'p_expr_repeat_zeromore','/Users/bambool/Desktop/let/myyacc.py',34),
+  ('expr -> REPEAT ONEMORE expr','expr',3,'p_expr_repeat_onemore','/Users/bambool/Desktop/let/myyacc.py',38),
+  ('expr -> REPEAT NUMBER TO NUMBER expr','expr',5,'p_expr_repeat_range','/Users/bambool/Desktop/let/myyacc.py',42),
+  ('expr -> expr AND expr','expr',3,'p_expr_and','/Users/bambool/Desktop/let/myyacc.py',46),
+  ('expr -> expr OR expr','expr',3,'p_expr_or','/Users/bambool/Desktop/let/myyacc.py',50),
+  ('expr -> CONCAT expr expr','expr',3,'p_expr_concat','/Users/bambool/Desktop/let/myyacc.py',54),
+  ('expr -> NOT expr','expr',2,'p_expr_not','/Users/bambool/Desktop/let/myyacc.py',58),
+  ('expr -> ONEOF NUMBER TO NUMBER','expr',4,'p_expr_to','/Users/bambool/Desktop/let/myyacc.py',62),
+  ('expr -> term','expr',1,'p_expr_term','/Users/bambool/Desktop/let/myyacc.py',66),
+  ('expr -> WORD END expr','expr',3,'p_expr_word_end','/Users/bambool/Desktop/let/myyacc.py',70),
+  ('expr -> WORD HAS NUMBER term','expr',4,'p_expr_word_has','/Users/bambool/Desktop/let/myyacc.py',82),
+  ('expr -> WORD BEGIN expr','expr',3,'p_expr_word_begin','/Users/bambool/Desktop/let/myyacc.py',88),
+  ('term -> NAME','term',1,'p_term_name','/Users/bambool/Desktop/let/myyacc.py',95),
+  ('term -> DIGIT','term',1,'p_term_digit','/Users/bambool/Desktop/let/myyacc.py',102),
+  ('term -> CHAR','term',1,'p_term_char','/Users/bambool/Desktop/let/myyacc.py',106),
+  ('term -> LETTER','term',1,'p_term_letter','/Users/bambool/Desktop/let/myyacc.py',110),
+  ('term -> UPCASE','term',1,'p_term_up_letter','/Users/bambool/Desktop/let/myyacc.py',114),
+  ('term -> LOWCASE','term',1,'p_term_low_letter','/Users/bambool/Desktop/let/myyacc.py',118),
+  ('term -> WORD','term',1,'p_term_word','/Users/bambool/Desktop/let/myyacc.py',122),
+  ('term -> CONST','term',1,'p_term_CONST','/Users/bambool/Desktop/let/myyacc.py',126),
+  ('term -> BLANK','term',1,'p_term_BLANK','/Users/bambool/Desktop/let/myyacc.py',131),
+  ('term -> ONEOF CONST','term',2,'p_term_oneof','/Users/bambool/Desktop/let/myyacc.py',135),
+  ('term -> ONEZERO term','term',2,'p_term_onezero','/Users/bambool/Desktop/let/myyacc.py',141),
 ]

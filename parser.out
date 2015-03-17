@@ -2,7 +2,11 @@ Created by PLY version 3.4 (http://www.dabeaz.com/ply)
 
 Unused terminals:
 
+    RETURN
     PRINT
+    IN
+    RSCOPE
+    LSCOPE
 
 Grammar
 
@@ -45,9 +49,11 @@ CONST                : 22 24
 DIGIT                : 16
 END                  : 12
 HAS                  : 13
+IN                   : 
 LET                  : 1
 LETTER               : 18
 LOWCASE              : 20
+LSCOPE               : 
 NAME                 : 1 15
 NOT                  : 9
 NUMBER               : 2 5 5 10 10 13
@@ -57,6 +63,8 @@ ONEZERO              : 25
 OR                   : 7
 PRINT                : 
 REPEAT               : 2 3 4 5
+RETURN               : 
+RSCOPE               : 
 TO                   : 5 10
 UPCASE               : 19
 WORD                 : 12 13 14 21

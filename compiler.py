@@ -1,9 +1,7 @@
 import myyacc
 import sys
 
-# filename = raw_input('--> ')
-
-filename = "let/torrent.let"
+filename = sys.argv[1]
 fo = open(filename, "rw+")
 
 lines = fo.readlines()
