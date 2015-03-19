@@ -47,7 +47,11 @@ term ::= DIGIT [let _variable be digit -> _variable: \d]
 ```
 
 ### Inplementation
-Let-Language is build upon PLY(Python Lex-Yacc). 
+Let-Language utilizes PLY(Python Lex-Yacc) to create a compiler for the language. 
+
+To compile a `.let` script, just use `compiler.py`.
+
+    python compiler.py let/torrent.let
 
 ### Demo
 
