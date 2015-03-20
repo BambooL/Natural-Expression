@@ -31,6 +31,8 @@ gPats = [
   [r'(.*) (use|using|has|contains|have|contain) (\"|\')(.*)(\"|\')(.*)',
   ['LET _%1 BE "%3"'],["Okay, %1 has %3"]]
 
+  
+
 
 
 
