@@ -1,13 +1,11 @@
-# let_language_for_Regex
-This is a simple let language for the Regex construction
+# Natural Expressions
+**Natural Expressions** is a new regular expression language designed to produce readable, context-free, and reusable code.
 
-## let_language
-Let-Language is a context-free language designed for Regex construction which simplifies 
-the process as well lower the comprehension bar. For example, to build a Regex like this:
+It significantly simplifies the process of creating powerful regular expressions, and makes it possible for even laymen to understand. For example, to build a Regex like this:
 ```
 ^( ( \d { 2 }  ) | [a-zA-Z]+ )
 ```
-you may write a script using let-Language like this:
+you may write a script using Natural Expressions like this:
 ```
 let _a be digit
 let _b be repeat 2 _a
@@ -16,8 +14,9 @@ let _d be or _b _c
 let _e be not _d
 ```
 
-### syntax
-The syntax of Let-Language is elaborated in BNF(Backus–Naur Form). Upper-cased Tokens are tokens in the lexer. 
+### Syntax
+
+The syntax of Let-Language is denoted in BNF(Backus–Naur Form). Upper-case Tokens are tokens in the lexer. 
 ```
 assign ::= LET NAME BE expr [let _variable be digit -> _variable:\d]
 expr ::= REPEAT NUMBER expr [let _variable be repeat 4 digit -> _variable: \d{4}]
@@ -46,10 +45,15 @@ term ::= DIGIT [let _variable be digit -> _variable: \d]
        | NUMBER TO NUMBER [let _variable be repeat 3 to 5 digit -> _varaible: \d{3,5}]
 ```
 
-### Inplementation
-Let-Language is build upon PLY(Python Lex-Yacc). 
+### Implementation
 
-### Demo
+Let-Language utilizes PLY(Python Lex-Yacc) to create a compiler for the language. 
+
+To compile a `.let` script, just use `compiler.py`.
+
+    python compiler.py let/torrent.let
+
+### Example Scripts
 
 * To generate a normal regular expression (let/first.let)
 ```
@@ -172,24 +176,6 @@ The regular expression generated(_torrent):
 ```
 ( - | \w )+(   | . )?( - | \w )+(   | . )?*( ( ( ^\d(   | . )?+ )season(   | . )??\d\d?e\d\d?( -e\d\d? | x\d\d? )? | [([]?\d[)]]? { 4 }  ) | ( BOXSET | ( XVID | ( DIVX | ( LIMITED | ( UNRATED | ( PROPER | ( DTS | ( AC3 | ( AAC | ( BLURAY | ( HD( TV | DVD ) | ( ( DVD | ( BD | ( BR | WEBRIP ) ) ) | ( \dp+ | [hx].?264 ) ) ) ) ) ) ) ) ) ) ) ) ) )
 ```
-
-
-## Verification
-* In our design, there are basically three unit operations: ``AND`` ``OR`` ``REPEAT`` 
-corresponding to the ``Concatenation`` ``Option`` and ``Kleen Star`` in the traditional
-regex. In each of the three unit operations, we use inclusion to verify the correctness
-of the regex generation. The idea comes from the construction of regex, e.g.,
-```
-.*\d{3}.* is subset of .*\d.*
-```
-or
-```
-.*abcd.* is subset of .*ab.*
-.*a.* is subset of .*(a|b).*
-```
-Here the relationship of super- and sub-set means that, all the strings can be match 
-with super-set can be matched with sub-set.
-
 
 ## Applications of regular expression
 * Regular Expressions for IPS
