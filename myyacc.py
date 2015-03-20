@@ -59,6 +59,8 @@ def p_expr_and(p):
 def p_expr_or(p):
 	'expr : expr OR expr'
 	p[0] = '( ' + p[1] + " | " + p[3] + " )"
+	inclusion.verify(p[1], p[0])
+	inclusion.verify(p[3], p[0])
 
 def p_expr_concat(p):
 	'expr : CONCAT expr expr'
