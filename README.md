@@ -183,6 +183,23 @@ The regular expression generated(_torrent):
 ( - | \w )+(   | . )?( - | \w )+(   | . )?*( ( ( ^\d(   | . )?+ )season(   | . )??\d\d?e\d\d?( -e\d\d? | x\d\d? )? | [([]?\d[)]]? { 4 }  ) | ( BOXSET | ( XVID | ( DIVX | ( LIMITED | ( UNRATED | ( PROPER | ( DTS | ( AC3 | ( AAC | ( BLURAY | ( HD( TV | DVD ) | ( ( DVD | ( BD | ( BR | WEBRIP ) ) ) | ( \dp+ | [hx].?264 ) ) ) ) ) ) ) ) ) ) ) ) ) )
 ```
 
+## Verification
+* In our design, there are basically three unit operations: ``AND`` ``OR`` ``REPEAT`` 
+corresponding to the ``Concatenation`` ``Option`` and ``Kleen Star`` in the traditional
+regex. In each of the three unit operations, we use inclusion to verify the correctness
+of the regex generation. The idea comes from the construction of regex, e.g.,
+```
+.*\d{3}.* is subset of .*\d.*
+```
+or
+```
+.*abcd.* is subset of .*ab.*
+.*a.* is subset of .*(a|b).*
+```
+Here the relationship of super- and sub-set means that, all the strings can be match 
+with super-set can be matched with sub-set.
+
+
 ## Applications of regular expression
 * Regular Expressions for IPS
 
