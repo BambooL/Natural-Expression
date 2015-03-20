@@ -50,9 +50,15 @@ term ::= DIGIT [let _variable be digit -> _variable: \d]
 Let-Language utilizes PLY(Python Lex-Yacc) to create a compiler for the language. 
 
 To compile a `.let` script, just use `compiler.py`.
+<<<<<<< HEAD
 
     python compiler.py let/torrent.let
 
+=======
+
+    python compiler.py let/torrent.let
+
+>>>>>>> c619471c08a3bfe95e259757872abdf2c6bc49d0
 ### Example Scripts
 
 * To generate a normal regular expression (let/first.let)
