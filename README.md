@@ -194,6 +194,7 @@ Here the relationship of super- and sub-set means that, all the strings can be m
 with super-set can be matched with sub-set.
 
 * Check Syntax Error along the way
+
 ### Generate examples for validation
 * let _header be 'http" and ONEZERO "s" and "://"
 * **u'https://' 'http://'**
