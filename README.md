@@ -122,7 +122,7 @@ let _url be _header and _domainname and _next and _id
 ```
 The regular expression generated(_url):
 ```
-https?://regex.com/r/( ( [a-zA-Z] | \d ){1,6} )
+https?://regex\.com/r/( ( [a-zA-Z] | \d ){1,6} )
 ```
 
 * distorted_email
@@ -192,6 +192,21 @@ or
 ```
 Here the relationship of super- and sub-set means that, all the strings can be match 
 with super-set can be matched with sub-set.
+
+* Check Syntax Error along the way
+### Generate examples for validation
+* let _header be 'http" and ONEZERO "s" and "://"
+* **u'https://' 'http://'**
+* let _domainname be "regex.com"
+* **u'regex.com'**
+* let _next be "/r/"
+* **u'/r/'**
+* let _validcharacter be letter or digit 
+* **u'L' '1'**
+* let _id be REPEAT 1 TO 6 _validcharacter 
+* **u'820n1Y' 'u'**
+* let _url be _header and _domainname and _next and _id
+* **u'http://regex.com/r/k' 'http://regex.com/r/kRf356'**
 
 
 ## Applications of regular expression
