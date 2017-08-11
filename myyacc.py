@@ -8,12 +8,13 @@ names = { }
 # assignment
 
 
-def p_assign(p):
-	'''assign : LET NAME BE expr'''
-	names[p[2]] = p[4]
-	inclusion.verify(names[p[2]], p[4])
+def p_assign_EXACT(p):
+	'assign : LET NAME BE EXACT expr'
+	names[p[2]] = p[5]
 
-
+def p_assign_EXIST(p):
+	'assign : LET NAME BE EXIST expr'
+	names[p[2]] = ".*" + p[5] + ".*"
 
 # def p_assign_in_scope(p):
 # 	'assign : LET new_scope NAME BE expr IN assign'
@@ -32,46 +33,35 @@ def p_assign(p):
 def p_expr_repeat(p):
 	'expr : REPEAT NUMBER expr'
 	p[0] = p[3] + " { " + p[2] + " } "
-	inclusion.verify(p[0], p[2])
 
 
 def p_expr_repeat_zeromore(p):
 	'expr : REPEAT ZEROMORE expr'
 	p[0] = p[3] + "*" 
-	inclusion.verify(p[0], p[3])
 
 def p_expr_repeat_onemore(p):
 	'expr : REPEAT ONEMORE expr'
 	p[0] = p[3] + "+" 
-	inclusion.verify(p[0], p[3])
 
 def p_expr_repeat_range(p):
 	'expr : REPEAT NUMBER TO NUMBER expr'
 	p[0] = '( ' + p[5] + "{" + p[2] + "," + p[4] + "}" + " )"
-	inclusion.verify(p[0], p[5])
 
 def p_expr_and(p):
 	'expr : expr AND expr'
 	p[0] = p[1] + p[3] 
-	inclusion.verify(p[0], p[1])
-	inclusion.verify(p[0], p[3])
 
 def p_expr_or(p):
 	'expr : expr OR expr'
 	p[0] = '( ' + p[1] + " | " + p[3] + " )"
-	inclusion.verify(p[1], p[0])
-	inclusion.verify(p[3], p[0])
 
 def p_expr_concat(p):
 	'expr : CONCAT expr expr'
 	p[0] = p[2] + p[3]
-	inclusion.verify(p[0], p[2])
-	inclusion.verify(p[0], p[3])
 
 def p_expr_not(p):
 	'expr : NOT expr'
 	p[0] = '( ' + '^' + p[2] + " )"
-
 
 def p_expr_to(p):
 	'expr : ONEOF NUMBER TO NUMBER'
